@@ -119,7 +119,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         address ownerOfTokenId = ownerOf(tokenId);
         require(player == ownerOfTokenId && player == msg.sender && ownerOfTokenId == msg.sender, "It seems like you are not the owner of this token...");
-        // require(block.timestamp>1635141600, "Sorry, it is not time for round 1.");  (GMT): Monday, October 25, 2021 6:00:00 AM
+        // require(block.timestamp>1634724000 && block.timestamp<1634810400, "Sorry, it is not time for round 1.");
         uint256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 1, "Must be a player with an NFT that's alive and in round 1!");
 
@@ -141,7 +141,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         address ownerOfTokenId = ownerOf(tokenId);
         require(player == ownerOfTokenId && player == msg.sender && ownerOfTokenId == msg.sender, "It seems like you are not the owner of this token...");
-        // require(block.timestamp>1635228000, "Sorry, it is not time for round 2.");  (GMT): Tuesday, October 26, 2021 6:00:00 AM
+        // require(block.timestamp>1634810400 && block.timestamp<1634896800, "Sorry, it is not time for round 2.");
         uint256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 2, "Must be a player with an NFT that's alive and in round 2!");
 
@@ -163,7 +163,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         address ownerOfTokenId = ownerOf(tokenId);
         require(player == ownerOfTokenId && player == msg.sender && ownerOfTokenId == msg.sender, "It seems like you are not the owner of this token...");
-        // require(block.timestamp>1635314400, "Sorry, it is not time for round 3.");  (GMT): Wednesday, October 27, 2021 6:00:00 AM
+        // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
         uint256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 3, "Must be a player with an NFT that's alive and in round 3!");
 
