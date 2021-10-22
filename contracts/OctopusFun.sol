@@ -119,7 +119,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         address ownerOfTokenId = ownerOf(tokenId);
         require(player == ownerOfTokenId && player == msg.sender && ownerOfTokenId == msg.sender, "It seems like you are not the owner of this token...");
-        // require(block.timestamp>1635141600, "Sorry, it is not time for round 2.");  (GMT): Monday, October 25, 2021 6:00:00 AM
+        // require(block.timestamp>1635141600, "Sorry, it is not time for round 1.");  (GMT): Monday, October 25, 2021 6:00:00 AM
         uint256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 1, "Must be a player with an NFT that's alive and in round 1!");
 
