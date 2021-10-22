@@ -1,0 +1,16 @@
+{
+  "attributes": [
+    {
+      "trait_type": "Speed",
+      "value": 1
+    },
+    {
+      "trait_type": "Intelligence",
+      "value": 10
+    }
+  ],
+  "description": "Player 1",
+  "image": "https://gateway.pinata.cloud/ipfs/QmbXFmMPEhhyeTdxFcVVokoe4775EPuVaYU9KmdyvRLc41",
+  "name": "Ramses"
+}
+

@@ -1,0 +1,9 @@
+require("dotenv").config()
+const API_URL = process.env.API_URL
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
+const web3 = createAlchemyWeb3(API_URL)
+const contract = require("./contract-abi.json")
+
+
+const contractAddress = "0x12A0294bdD762b63f254369B96E1B956a9719540"
+
