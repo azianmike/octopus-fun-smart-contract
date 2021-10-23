@@ -202,29 +202,69 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         return "Congrats, you survived round 3.";
     }
 
+    // Starts on Friday, October 22, 2021 10:00:00 AM GMT
+    function playRound4(address player)
+        external
+        nonReentrant
+        returns(string memory)
+    {
+        require(player == msg.sender, "It seems like you are not the owner of this token...");
+        // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
+        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 4, "Must be a player with an NFT that's alive and in round 4!");
 
-    // Total of six rounds. These will be turned on when the game is live on mainnet
+        uint256 chanceOfSurvival = rand(); 
+        if(chanceOfSurvival < 499){ // ~50% chance of surviving round 4
+            eliminateNFT(player, roundThatPlayerIsIn);
+            return "Sorry, you were eliminated from round 4.";
+        }
 
-    // function playRound4(address player)
-    //     external
-    //     payable
-    //     nonReentrant
-    // {
-    // }
+        aliveNFTs[player] = aliveNFTs[player] + 1; // increment the round that the player is on
+        lastRoundAliveNFTCount.increment();
+        return "Congrats, you survived round 4.";
+    }
 
-    // function playRound5(address player)
-    //     external
-    //     payable
-    //     nonReentrant
-    // {
-    // }
+    function playRound5(address player)
+        external
+        nonReentrant
+        returns(string memory)
+    {
+        require(player == msg.sender, "It seems like you are not the owner of this token...");
+        // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
+        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 5, "Must be a player with an NFT that's alive and in round 5!");
 
-    // function playRound6(address player)
-    //     external
-    //     payable
-    //     nonReentrant
-    // {
-    // }
+        uint256 chanceOfSurvival = rand(); 
+        if(chanceOfSurvival < 499){ // ~50% chance of surviving round 5
+            eliminateNFT(player, roundThatPlayerIsIn);
+            return "Sorry, you were eliminated from round 5.";
+        }
+
+        aliveNFTs[player] = aliveNFTs[player] + 1; // increment the round that the player is on
+        lastRoundAliveNFTCount.increment();
+        return "Congrats, you survived round 5.";
+    }
+
+    function playRound6(address player)
+        external
+        nonReentrant
+        returns(string memory)
+    {
+        require(player == msg.sender, "It seems like you are not the owner of this token...");
+        // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 6.");
+        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 6, "Must be a player with an NFT that's alive and in round 6!");
+
+        uint256 chanceOfSurvival = rand(); 
+        if(chanceOfSurvival < 499){ // ~50% chance of surviving round 6
+            eliminateNFT(player, roundThatPlayerIsIn);
+            return "Sorry, you were eliminated from round 6.";
+        }
+
+        aliveNFTs[player] = aliveNFTs[player] + 1; // increment the round that the player is on
+        lastRoundAliveNFTCount.increment();
+        return "Congrats, you survived round 6.";
+    }
 
     function eliminateNFT(address player, uint256 roundThatPlayerIsIn) 
         private
