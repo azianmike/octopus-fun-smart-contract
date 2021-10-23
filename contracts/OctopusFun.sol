@@ -54,7 +54,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
+        require(aliveNFTs[to] == 0);
         super.safeTransferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -70,7 +70,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
+        require(aliveNFTs[to] == 0);
         super.transferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -86,7 +86,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
+        require(aliveNFTs[to] == 0);
         super.safeTransferFrom(from, to, tokenId, data);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner

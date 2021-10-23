@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/michaelluo/Documents/CryptoProjects/my-nft/contracts/OctopusFun.sol": {
-      "lastModificationDate": 1635025879187,
-      "contentHash": "1cc70d41d2c3a0280097fcd72fc6dee6",
+      "lastModificationDate": 1635026839206,
+      "contentHash": "c2a56091feab73120e2649f07c5cfd7d",
       "sourceName": "contracts/OctopusFun.sol",
       "solcConfig": {
         "version": "0.8.0",
