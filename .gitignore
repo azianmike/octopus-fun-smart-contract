@@ -1,3 +1,9 @@
 
 .DS_Store
 .DS_Store
+cache/solidity-files-cache.json
+artifacts/build-info/b65638adac946132409a13e516c9afcb.json
+artifacts/build-info/dd019dd2794ef5113cd0aacb9c63c32e.json
+artifacts/contracts/OctopusFun.sol/OctopusFun.dbg.json
+artifacts/contracts/OctopusFun.sol/OctopusFun.json
+artifacts/build-info/b65638adac946132409a13e516c9afcb.json

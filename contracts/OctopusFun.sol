@@ -33,7 +33,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(COST_TO_MINT <= msg.value, "Ether value sent is not correct"); 
         require(_tokenIds.current()<MAX_OCTOPUS_FUN_TOKENS, "We have reached the max number of players, try again next time");
-        require(aliveNFTs[address] == 0  && deadNFTs[address] == 0);
+        require(aliveNFTs[recipient] == 0  && deadNFTs[recipient] == 0);
 
         _tokenIds.increment();
         aliveNFTCount.increment();
@@ -52,7 +52,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[address] == 0  && deadNFTs[address] == 0);
+        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
         super.safeTransferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -66,7 +66,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[address] == 0  && deadNFTs[address] == 0);
+        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
         super.transferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -80,7 +80,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[address] == 0  && deadNFTs[address] == 0);
+        require(aliveNFTs[to] == 0  && deadNFTs[to] == 0);
         super.safeTransferFrom(from, to, tokenId, data);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
