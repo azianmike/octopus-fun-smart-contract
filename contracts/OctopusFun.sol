@@ -276,14 +276,13 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
 
     // If there's one player left, payout to solo winner!
     // Else, check that round 6 (Ends on Friday, October 22, 2021 3:00:00 PM GMT) is over & split the winnings
-    function checkIfWinnerAndPayout(address player, uint256 tokenId) 
+    function checkIfWinnerAndPayout(address player) 
         public
         nonReentrant
         payable
         returns(string memory)
     {
-        address ownerOfTokenId = ownerOf(tokenId);
-        require(player == ownerOfTokenId && player == msg.sender && ownerOfTokenId == msg.sender, "It seems like you are not the owner of this token...");
+        require(player == msg.sender, "It seems like you are not the owner of this address...");
 
         if(aliveNFTCount.current() == 1) {
             require(aliveNFTs[player] != 0, "You are not the winner this time");
@@ -294,7 +293,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         } else {
             // require(block.timestamp>1634904000000, "Be patient, the game is not finished");
             int256 roundThatPlayerIsIn = aliveNFTs[player];
-            require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 4, "Must be a player with an NFT that's alive and passed all 3 rounds!");
+            require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 7, "Must be a player with an NFT that's alive and passed all 6 rounds!");
 
             uint256 balance = address(this).balance;
             uint256 numberOfWinners = lastRoundAliveNFTCount.current();
