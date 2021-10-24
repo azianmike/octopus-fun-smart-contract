@@ -154,7 +154,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635058800 && block.timestamp<1635145200, "Sorry, it is not time for round 1.");
+        // require(block.timestamp>1635058800 && block.timestamp<1635145200, "Sorry, it is not time for round 1.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 1, "Must be a player with an NFT that's alive and in round 1!");
 
@@ -175,7 +175,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635145200 && block.timestamp<1635231600, "Sorry, it is not time for round 2.");
+        // require(block.timestamp>1635145200 && block.timestamp<1635231600, "Sorry, it is not time for round 2.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 2, "Must be a player with an NFT that's alive and in round 2!");
 
@@ -196,7 +196,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635231600 && block.timestamp<1635318000, "Sorry, it is not time for round 3.");
+        // require(block.timestamp>1635231600 && block.timestamp<1635318000, "Sorry, it is not time for round 3.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 3, "Must be a player with an NFT that's alive and in round 3!");
 
@@ -218,7 +218,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635318000 && block.timestamp<1635404400, "Sorry, it is not time for round 3.");
+        // require(block.timestamp>1635318000 && block.timestamp<1635404400, "Sorry, it is not time for round 3.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 4, "Must be a player with an NFT that's alive and in round 4!");
 
@@ -239,7 +239,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635404400 && block.timestamp<1635490800, "Sorry, it is not time for round 3.");
+        // require(block.timestamp>1635404400 && block.timestamp<1635490800, "Sorry, it is not time for round 3.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 5, "Must be a player with an NFT that's alive and in round 5!");
 
@@ -260,7 +260,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         returns(string memory)
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
-        require(block.timestamp>1635490800 && block.timestamp<1635577200, "Sorry, it is not time for round 6.");
+        // require(block.timestamp>1635490800 && block.timestamp<1635577200, "Sorry, it is not time for round 6.");
         int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 6, "Must be a player with an NFT that's alive and in round 6!");
 
