@@ -18,8 +18,8 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     // Counts number of alive NFTs in the last round to calculate proper payout since aliveNFTCount doesn't account for players who forgot to play rounds
     Counters.Counter public lastRoundAliveNFTCount;  
 
-    mapping(address => uint256) public aliveNFTs;  // Maps address to current round that player is in
-    mapping(address => uint256) public deadNFTs;  // Maps address to current round that player is in
+    mapping(address => int256) public aliveNFTs;  // Maps address to current round that player is in
+    mapping(address => int256) public deadNFTs;  // Maps address to current round that player is in
     mapping(address => uint256) public addressToTokenId;  // Maps address to token Id
 
     uint256 public constant MAX_OCTOPUS_FUN_TOKENS = 456;  // Only 456 total NFTs can be minted!
@@ -146,7 +146,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634724000 && block.timestamp<1634810400, "Sorry, it is not time for round 1.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 1, "Must be a player with an NFT that's alive and in round 1!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -167,7 +167,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634810400 && block.timestamp<1634896800, "Sorry, it is not time for round 2.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 2, "Must be a player with an NFT that's alive and in round 2!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -188,7 +188,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 3, "Must be a player with an NFT that's alive and in round 3!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -210,7 +210,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 4, "Must be a player with an NFT that's alive and in round 4!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -231,7 +231,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 3.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 5, "Must be a player with an NFT that's alive and in round 5!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -252,7 +252,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     {
         require(player == msg.sender, "It seems like you are not the owner of this token...");
         // require(block.timestamp>1634896800 && block.timestamp<1634904000000, "Sorry, it is not time for round 6.");
-        uint256 roundThatPlayerIsIn = aliveNFTs[player];
+        int256 roundThatPlayerIsIn = aliveNFTs[player];
         require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 6, "Must be a player with an NFT that's alive and in round 6!");
 
         uint256 chanceOfSurvival = rand(); 
@@ -266,7 +266,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         return "Congrats, you survived round 6.";
     }
 
-    function eliminateNFT(address player, uint256 roundThatPlayerIsIn) 
+    function eliminateNFT(address player, int256 roundThatPlayerIsIn) 
         private
     {
         aliveNFTs[player] = -1;  // Zero out the round that the player is on, effectively removing them from the aliveNFTs list
@@ -293,7 +293,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
             payable(winnerAddress).transfer(balance);
         } else {
             // require(block.timestamp>1634904000000, "Be patient, the game is not finished");
-            uint256 roundThatPlayerIsIn = aliveNFTs[player];
+            int256 roundThatPlayerIsIn = aliveNFTs[player];
             require(roundThatPlayerIsIn != 0 && roundThatPlayerIsIn == 4, "Must be a player with an NFT that's alive and passed all 3 rounds!");
 
             uint256 balance = address(this).balance;
