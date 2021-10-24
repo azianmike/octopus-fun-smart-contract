@@ -54,7 +54,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0);
+        require(aliveNFTs[to] <= 0);
         super.safeTransferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -70,7 +70,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0);
+        require(aliveNFTs[to] <= 0);
         super.transferFrom(from, to, tokenId);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -86,7 +86,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
         public
         override
     {
-        require(aliveNFTs[to] == 0);
+        require(aliveNFTs[to] <= 0);
         super.safeTransferFrom(from, to, tokenId, data);
         if(aliveNFTs[from] > 0 ) { // Make sure alive. Doesn't matter if dead (also save some gas)
             aliveNFTs[to] = aliveNFTs[from]; // Set the round of the new owner to the round of the previous owner
@@ -269,7 +269,7 @@ contract OctopusFun is ERC721URIStorage, ReentrancyGuard {
     function eliminateNFT(address player, uint256 roundThatPlayerIsIn) 
         private
     {
-        aliveNFTs[player] = 0;  // Zero out the round that the player is on, effectively removing them from the aliveNFTs list
+        aliveNFTs[player] = -1;  // Zero out the round that the player is on, effectively removing them from the aliveNFTs list
         deadNFTs[player] = roundThatPlayerIsIn;  // Move player to deadNFTs list
         aliveNFTCount.decrement();
     }
